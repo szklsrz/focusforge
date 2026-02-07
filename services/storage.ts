@@ -1,0 +1,48 @@
+
+import { DailyStats, SessionRecord, StorageData } from '../types';
+
+const STORAGE_KEY = 'focusforge_data';
+
+export const getStorageData = (): StorageData => {
+  const data = localStorage.getItem(STORAGE_KEY);
+  return data ? JSON.parse(data) : {};
+};
+
+export const saveSession = (session: SessionRecord) => {
+  const data = getStorageData();
+  const dateKey = session.startTime.split('T')[0];
+
+  if (!data[dateKey]) {
+    data[dateKey] = {
+      date: dateKey,
+      totalPoints: 0,
+      totalFocusMinutes: 0,
+      sessions: [],
+    };
+  }
+
+  const dayData = data[dateKey];
+  dayData.sessions.push(session);
+  
+  if (session.type === 'focus') {
+    dayData.totalPoints += session.points;
+    dayData.totalFocusMinutes += session.focusMinutes;
+  }
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  return data[dateKey];
+};
+
+export const isTaskNameUniqueToday = (name: string): boolean => {
+  const data = getStorageData();
+  const todayKey = new Date().toISOString().split('T')[0];
+  const todayData = data[todayKey];
+  
+  if (!todayData) return true;
+  return !todayData.sessions.some(s => s.taskName.toLowerCase() === name.toLowerCase());
+};
+
+export const getAllDailyStats = (): DailyStats[] => {
+  const data = getStorageData();
+  return Object.values(data).sort((a, b) => b.date.localeCompare(a.date));
+};
