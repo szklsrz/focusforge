@@ -1,7 +1,7 @@
 
 import { DailyStats, SessionRecord, StorageData } from '../types';
 
-const STORAGE_KEY = 'focusforge_data';
+const STORAGE_KEY = 'forgefocus_data';
 
 export const getStorageData = (): StorageData => {
   const data = localStorage.getItem(STORAGE_KEY);

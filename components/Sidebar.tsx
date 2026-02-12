@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { View } from '../types';
-import icon from '../icon.png';
+import icon from '../icon-green.png';
 
 interface SidebarProps {
   currentView: View;
@@ -18,7 +18,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView }) => {
     <div className="fixed bottom-0 left-0 w-full md:w-64 md:h-screen bg-white border-t-2 md:border-t-0 md:border-r-2 border-[#e5e5e5] flex md:flex-col z-50">
       <div className="hidden md:flex p-8 items-center gap-3">
         <div className="w-10 h-10 flex items-center justify-center text-white">
-            <img src={icon} alt="FocusForge Icon" className="w-full h-full object-contain"/>
+            <img src={icon} alt="Forgefocus Icon" className="w-full h-full object-contain"/>
         </div>
         <span className="text-2xl font-black text-[#58cc02] tracking-tighter">ForgeFocus</span>
       </div>
