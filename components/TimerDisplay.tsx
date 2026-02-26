@@ -59,6 +59,7 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({ onSessionComplete }) => {
       setTimeLeft(config.restTime * 60);
       setSessionStartTime(endTime);
       setIsActive(false);
+      setTaskName('');
     } else {
       playSound('fail');
       // After rest, reset to focus
@@ -114,7 +115,6 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({ onSessionComplete }) => {
     setConfig(newConfig);
     setMode('focus');
     setTimeLeft(newConfig.focusTime * 60);
-    setTaskName('');
     setSessionStartTime(null);
   };
 

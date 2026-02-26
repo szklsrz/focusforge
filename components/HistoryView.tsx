@@ -49,7 +49,7 @@ const HistoryView: React.FC = () => {
                      <i className="fa-solid fa-fire"></i> {day.totalPoints} XP
                    </span>
                    <span className="text-sm font-bold text-[#1cb0f6] flex items-center gap-1">
-                     <i className="fa-solid fa-clock"></i> {day.totalFocusMinutes} min Focus
+                     <i className="fa-solid fa-hourglass-half"></i> {day.totalFocusMinutes} min Focus
                    </span>
                 </div>
               </div>
